@@ -9,13 +9,13 @@ public class Main {
         Chapter chp1 = discoTitanic.getChapter(indexChapterOne);
         int indexSubChapterOneOne = chp1.createSubChapter("Subcapitolul 1.1");
         SubChapter scOneOne = chp1.getSubChapter(indexSubChapterOneOne);
-        scOneOne.createNewParagraph("Paragraph 1");
-        scOneOne.createNewParagraph("Paragraph 2");
-        scOneOne.createNewParagraph("Paragraph 3");
-        scOneOne.createNewImage("Image 1");
-        scOneOne.createNewParagraph("Paragraph 4");
-        scOneOne.createNewTable("Table 1");
-        scOneOne.createNewParagraph("Paragraph 5");
+        scOneOne.createNewElement("Paragraph 1", "paragraph");
+        scOneOne.createNewElement("Paragraph 2", "paragraph");
+        scOneOne.createNewElement("Paragraph 3", "paragraph");
+        scOneOne.createNewElement("Image 1", "image");
+        scOneOne.createNewElement("Paragraph 4", "paragraph");
+        scOneOne.createNewElement("Table 1", "table");
+        scOneOne.createNewElement("Paragraph 5", "paragraph");
         scOneOne.print();
     }
 }
