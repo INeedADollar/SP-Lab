@@ -28,17 +28,26 @@ public class SubChapter {
             table.print();
     }
 
-    public void createNewParagraph(String name){
+    public void createNewElement(String name, String type){
+        if(type == "paragraphs")
+            createNewParagraph(name);
+        if(type == "images")
+            createNewImage(name);
+        if(type == "tables")
+            createNewTable(name);
+    }
+
+    private void createNewParagraph(String name){
         Paragraph paragraph = new Paragraph(name);
         paragraphs.add(paragraph);
     }
 
-    public void createNewImage(String name){
+    private void createNewImage(String name){
         Image image = new Image(name);
         images.add(image);
     }
 
-    public void createNewTable(String name){
+    private void createNewTable(String name){
         Table table = new Table(name);
         tables.add(table);
     }

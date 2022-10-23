@@ -1,9 +1,12 @@
 package org.sp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Book {
     private final String title;
     private Author author;
-    private final TableOfContents tableOfContents = new TableOfContents();
+    private List<Chapter> chapters = new ArrayList<>();
 
     public Book(String title) {
         this.title = title;
@@ -14,16 +17,17 @@ public class Book {
     }
 
     public int createChapter(String name) {
-        return tableOfContents.addChapter(name);
+        Chapter ch = new Chapter(name);
+        chapters.add(ch);
+        return chapters.size();
     }
 
     public Chapter getChapter(int chapterIndex) {
-        return tableOfContents.getChapter(chapterIndex);
+        return chapters.get(chapterIndex - 1);
     }
 
     public void print(){
         System.out.println(title);
         author.print();
-        tableOfContents.print();
     }
 }

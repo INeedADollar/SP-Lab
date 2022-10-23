@@ -1,6 +1,6 @@
 package org.sp;
 
-public class Paragraph {
+public class Paragraph implements Element {
     private final String name;
 
     public Paragraph(String name) {

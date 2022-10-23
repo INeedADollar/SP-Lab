@@ -1,6 +1,6 @@
 package org.sp;
 
-public class Image {
+public class Image implements Element{
     private final String name;
 
     public Image(String name) {
