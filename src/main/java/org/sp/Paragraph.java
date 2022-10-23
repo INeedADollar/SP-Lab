@@ -1,13 +1,29 @@
 package org.sp;
 
-public class Paragraph implements Element {
-    private final String name;
+import java.util.ArrayList;
+import java.util.List;
 
-    public Paragraph(String name) {
-        this.name = name;
+public class Paragraph implements Element {
+    private String text;
+    private List<Element> elemente = new ArrayList<>();
+
+    public Paragraph(String text) {
+        this.text = text;
     }
 
     public void print(){
-        System.out.println("Paragraf: " + name);
+        System.out.println("Paragraph: " + text);
+    }
+
+    public void add(Element element){
+        elemente.add(element);
+    }
+
+    public void remove(Element element){
+        elemente.remove(element);
+    }
+
+    public Element get(int elIndex){
+        return elemente.get(elIndex - 1);
     }
 }
