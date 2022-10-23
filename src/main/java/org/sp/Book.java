@@ -3,31 +3,26 @@ package org.sp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book {
-    private final String title;
+public class Book extends Section {
+    private String book;
     private Author author;
-    private List<Chapter> chapters = new ArrayList<>();
 
-    public Book(String title) {
-        this.title = title;
+    public Book(String book) {
+        super("");
+        this.book = book;
+    }
+
+    public void print(){
+        System.out.println("Book: " + book + "\n");
+        author.print();
+        super.print();
     }
 
     public void addAuthor(Author author) {
         this.author = author;
     }
 
-    public int createChapter(String name) {
-        Chapter ch = new Chapter(name);
-        chapters.add(ch);
-        return chapters.size();
-    }
-
-    public Chapter getChapter(int chapterIndex) {
-        return chapters.get(chapterIndex - 1);
-    }
-
-    public void print(){
-        System.out.println(title);
-        author.print();
+    public void addContent(Element element) {
+        add(element);
     }
 }
