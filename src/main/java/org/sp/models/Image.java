@@ -1,6 +1,8 @@
 package org.sp.models;
 
 import lombok.NoArgsConstructor;
+import org.sp.services.ImageLoader;
+import org.sp.services.ImageLoaderFactory;
 
 import javax.persistence.*;
 import java.awt.Dimension;
@@ -21,7 +23,9 @@ public class Image extends AbstractElement implements Picture, Visitee {
 
     public Image(String name) {
         this.url = name;
-        this.content = new ImageContent();
+
+        ImageLoader loader = ImageLoaderFactory.create(name);
+        this.content = loader.load(url);
     }
 
     @Override

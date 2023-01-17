@@ -2,7 +2,7 @@ package org.sp.services;
 
 public class ImageLoaderFactory {
 
-    public ImageLoader create(String url) {
+    public static ImageLoader create(String url) {
         if(url.endsWith(".bmp")) {
             return new BMPImageLoader();
         }
