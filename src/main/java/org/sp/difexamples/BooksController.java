@@ -2,31 +2,38 @@ package org.sp.difexamples;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import org.sp.models.Author;
 import org.sp.models.Book;
 import org.sp.models.Element;
+import org.sp.models.NewBookRequest;
 import org.sp.persistence.BooksRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class BooksController {
     private final BooksRepository booksRepository;
-    private Book book;
+    private final BooksSubject allBooksSubject;
 
     @PostMapping
-    private void createBook() {
-        Book b = createNewBook();
-        this.book = booksRepository.save(b);
+    public String newBook(@RequestBody NewBookRequest newBookRequest) {
+        Book book = createBook(newBookRequest);
+        book = booksRepository.save(book);
+        allBooksSubject.add(book);
+        return "Book saved [" + book.getId() + "] " + book.getTitle();
     }
 
-    private Book createNewBook() {
-        return new Book();
+    private Book createBook(NewBookRequest newBookRequest) {
+        Book book = new Book(newBookRequest.title);
+
+        for(Author author : newBookRequest.authors) {
+            book.addAuthor(author);
+        }
+
+        return book;
     }
 
     @SneakyThrows
