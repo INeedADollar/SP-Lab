@@ -1,6 +1,17 @@
 package org.sp.models;
 
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+@NoArgsConstructor(force = true)
 public class Author {
+    @Id
+    @GeneratedValue
+    private int id;
     private final String name;
     private final String surname;
 
