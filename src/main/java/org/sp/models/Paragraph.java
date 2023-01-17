@@ -1,22 +1,10 @@
 package org.sp.models;
 
-import lombok.NoArgsConstructor;
 import org.sp.services.AlignLeft;
 import org.sp.services.AlignStrategy;
 
-import javax.persistence.*;
-
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@NoArgsConstructor(force = true)
 public class Paragraph extends AbstractElement implements Visitee {
-    @Id
-    @GeneratedValue
-    private int id;
-
     private final String text;
-
-    @Transient
     private AlignStrategy alignStrategy = new AlignLeft();
 
     public Paragraph(String text) {

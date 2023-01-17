@@ -1,23 +1,11 @@
 package org.sp.models;
 
-import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@NoArgsConstructor(force = true)
 public class Section extends AbstractElement implements Visitee {
-    @Id
-    @GeneratedValue
-    private int id;
-
-    protected String title;
-
-    @OneToMany(targetEntity = AbstractElement.class)
-    private List<AbstractElement> elemente = new ArrayList<>();
+    protected final String title;
+    private final List<Element> elemente = new ArrayList<>();
 
     public Section(String title) {
         this.title = title;
@@ -27,7 +15,7 @@ public class Section extends AbstractElement implements Visitee {
         return title;
     }
 
-    public List<AbstractElement> getElements() {
+    public List<Element> getElements() {
         return elemente;
     }
 
@@ -41,17 +29,18 @@ public class Section extends AbstractElement implements Visitee {
     @Override
     public void add(Element element) {
         AbstractElement abstractElement = (AbstractElement) element;
-        if (abstractElement.getParent() != null || abstractElement == this) {
+        if (abstractElement.getParent() != null || abstractElement == this
+        ) {
             throw new UnsupportedOperationException();
         }
 
-        elemente.add(abstractElement);
+        elemente.add(element);
         abstractElement.setParent(this);
     }
 
     @Override
     public void remove(Element element){
-        elemente.remove((AbstractElement)element);
+        elemente.remove(element);
     }
 
     @Override

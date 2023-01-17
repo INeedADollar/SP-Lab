@@ -1,20 +1,10 @@
 package org.sp.models;
 
-import javax.persistence.*;
 import java.awt.Dimension;
 
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class ImageProxy extends AbstractElement implements Picture, Visitee {
-    @Id
-    @GeneratedValue
-    private int id;
-
     private final String url;
-    private Dimension dimensions;
-    private ImageContent imageContent;
-
-    @Transient
+    private Dimension dim;
     private Image realImg;
 
     public ImageProxy(String url) {
@@ -27,18 +17,6 @@ public class ImageProxy extends AbstractElement implements Picture, Visitee {
         }
 
         return realImg;
-    }
-
-    public String getUrl() {
-        return url();
-    }
-
-    public Dimension getDimensions() {
-        return dim();
-    }
-
-    public ImageContent getContent() {
-        return (ImageContent) content();
     }
 
     @Override
@@ -73,7 +51,7 @@ public class ImageProxy extends AbstractElement implements Picture, Visitee {
 
     @Override
     public PictureContent content() {
-        return loadImage().getContent();
+        return loadImage().content();
     }
 
     @Override

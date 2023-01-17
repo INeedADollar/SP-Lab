@@ -1,17 +1,6 @@
 package org.sp.models;
 
-import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
-
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@NoArgsConstructor(force = true)
 public class TableOfContents extends AbstractElement implements Visitee {
-    @Id
-    @GeneratedValue
-    private int id;
-
     private String content;
 
     public TableOfContents(String content) {
