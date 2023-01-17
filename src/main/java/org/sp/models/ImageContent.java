@@ -1,12 +1,9 @@
 package org.sp.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class ImageContent extends PictureContent {
-    @Id
-    @GeneratedValue
-    private int id;
+
 }

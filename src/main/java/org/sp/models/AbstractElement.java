@@ -17,8 +17,12 @@ public abstract class AbstractElement implements Element {
     @Transient
     private Element parent;
 
-    void setParent(Element el){
+    public void setParent(Element el){
         parent = el;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override
