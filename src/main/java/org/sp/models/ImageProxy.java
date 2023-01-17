@@ -12,6 +12,8 @@ public class ImageProxy extends AbstractElement implements Picture, Visitee {
 
     private final String url;
     private Dimension dimensions;
+
+    @OneToOne
     private ImageContent imageContent;
 
     @Transient

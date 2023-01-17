@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public class JPGImageLoader implements ImageLoader {
     @Override
-    public ImageContent create(String url) {
+    public ImageContent load(String url) {
         try {
             TimeUnit.SECONDS.sleep(6);
         } catch (InterruptedException e) {

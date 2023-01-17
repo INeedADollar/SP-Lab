@@ -2,10 +2,7 @@ package org.sp.difexamples;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import org.sp.models.Author;
-import org.sp.models.Book;
-import org.sp.models.Element;
-import org.sp.models.NewBookRequest;
+import org.sp.models.*;
 import org.sp.persistence.BooksRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
